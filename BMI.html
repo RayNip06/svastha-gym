@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cek BMI | Svastha Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <span class="brand-sv">SV</span><span class="brand-astha">ASTHA</span>
+          <span class="brand-gym">GYM</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="bmi.html">Cek BMI</a></li>
+            <li class="nav-item"><a class="nav-link" href="cabang.html">Cabang</a></li>
+            <li class="nav-item"><a class="nav-link nav-cta" href="daftar.html">Daftar Sekarang</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Marquee -->
+    <div class="marquee-bar">
+      <marquee behavior="scroll" direction="left" scrollamount="5">
+        🏋️ PROMO SPESIAL: Daftar Bulanan bulan ini, gratis 1 minggu ekstra! &nbsp;&nbsp;&nbsp;⭐ Svastha Gym — Healthy &amp; Fun With Us &nbsp;&nbsp;&nbsp;💪 Alat import 100%, buka setiap hari 07.30–22.00 &nbsp;&nbsp;&nbsp;📍 2 Cabang di Palembang: DI Panjaitan &amp; Kapten Abdullah
+      </marquee>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container text-center">
+        <p class="section-eyebrow">KESEHATAN DIMULAI DARI SINI</p>
+        <h1 class="page-header-title">Cek BMI Kamu</h1>
+        <p class="page-header-sub">Body Mass Index (BMI) adalah indikator awal untuk mengetahui kondisi berat badanmu.</p>
+      </div>
+    </div>
+
+    <!-- BMI Calculator -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center g-4">
+
+          <!-- Form Calculator -->
+          <div class="col-lg-5">
+            <div class="bmi-card">
+              <h4 class="bmi-card-title"><i class="fas fa-calculator me-2"></i>Kalkulator BMI</h4>
+              <p class="text-muted small mb-4">Masukkan data dirimu untuk menghitung BMI secara otomatis.</p>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Jenis Kelamin</label>
+                <div class="d-flex gap-3">
+                  <div class="gender-btn active" id="genderMale" onclick="selectGender('male')">
+                    <i class="fas fa-mars"></i> Laki-laki
+                  </div>
+                  <div class="gender-btn" id="genderFemale" onclick="selectGender('female')">
+                    <i class="fas fa-venus"></i> Perempuan
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Usia</label>
+                <div class="input-group-bmi">
+                  <input type="number" class="gym-input form-control" id="ageInput" placeholder="Contoh: 20" min="5" max="100" />
+                  <span class="input-unit">tahun</span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Tinggi Badan</label>
+                <div class="input-group-bmi">
+                  <input type="number" class="gym-input form-control" id="heightInput" placeholder="Contoh: 170" min="100" max="250" />
+                  <span class="input-unit">cm</span>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Berat Badan</label>
+                <div class="input-group-bmi">
+                  <input type="number" class="gym-input form-control" id="weightInput" placeholder="Contoh: 65" min="20" max="300" />
+                  <span class="input-unit">kg</span>
+                </div>
+              </div>
+
+              <button class="btn btn-fire w-100 py-3" onclick="calculateBMI()">
+                <i class="fas fa-chart-line me-2"></i>Hitung BMI Saya
+              </button>
+
+              <div id="errorMsg" class="error-bmi d-none mt-3">
+                <i class="fas fa-exclamation-circle me-1"></i>
+                <span id="errorText">Mohon isi semua data dengan benar.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Panel -->
+          <div class="col-lg-6">
+            <!-- Default state -->
+            <div id="resultDefault" class="bmi-result-default">
+              <div class="bmi-illustration">
+                <i class="fas fa-weight-scale"></i>
+              </div>
+              <h5>Belum ada hasil</h5>
+              <p>Isi form di sebelah kiri dan klik <strong>"Hitung BMI Saya"</strong> untuk melihat hasilmu.</p>
+            </div>
+
+            <!-- Result state (hidden by default) -->
+            <div id="resultPanel" class="d-none">
+              <!-- BMI Score -->
+              <div class="bmi-score-card" id="bmiScoreCard">
+                <div class="bmi-score-label">BMI Kamu</div>
+                <div class="bmi-score-number" id="bmiNumber">—</div>
+                <div class="bmi-score-category" id="bmiCategory">—</div>
+
+                <!-- Progress bar BMI scale -->
+                <div class="bmi-bar-wrap mt-3">
+                  <div class="bmi-bar">
+                    <div class="bmi-bar-seg bmi-seg-under">Kurus</div>
+                    <div class="bmi-bar-seg bmi-seg-normal">Normal</div>
+                    <div class="bmi-bar-seg bmi-seg-over">Gemuk</div>
+                    <div class="bmi-bar-seg bmi-seg-obese">Obesitas</div>
+                  </div>
+                  <div class="bmi-pointer" id="bmiPointer"></div>
+                </div>
+                <div class="bmi-bar-labels">
+                  <span>&lt;18.5</span>
+                  <span>18.5</span>
+                  <span>25.0</span>
+                  <span>30.0</span>
+                  <span>&gt;30</span>
+                </div>
+              </div>
+
+              <!-- Detail info -->
+              <div class="bmi-detail-card mt-3">
+                <div class="row g-3 text-center">
+                  <div class="col-4">
+                    <div class="bmi-stat-mini">
+                      <div class="bmi-stat-val" id="detailHeight">—</div>
+                      <div class="bmi-stat-key">Tinggi</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="bmi-stat-mini">
+                      <div class="bmi-stat-val" id="detailWeight">—</div>
+                      <div class="bmi-stat-key">Berat</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="bmi-stat-mini">
+                      <div class="bmi-stat-val" id="detailIdeal">—</div>
+                      <div class="bmi-stat-key">Berat Ideal</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Rekomendasi -->
+              <div class="bmi-rekomendasi mt-3" id="rekomendasiBox">
+                <div class="bmi-rek-title"><i class="fas fa-lightbulb me-2"></i>Rekomendasi Svastha Gym</div>
+                <p class="bmi-rek-text" id="rekomendasiText">—</p>
+                <a href="daftar.html" class="btn btn-fire btn-sm mt-2 px-3 py-2">
+                  <i class="fas fa-dumbbell me-1"></i>Daftar Sekarang
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabel Kategori BMI -->
+        <div class="table-section mt-5">
+          <div class="text-center mb-4">
+            <p class="section-eyebrow">REFERENSI</p>
+            <h3 class="section-title" style="font-size:2rem;">Tabel Kategori BMI</h3>
+            <p class="text-muted small">Berdasarkan standar WHO yang disesuaikan untuk populasi Asia</p>
+          </div>
+          <div class="table-responsive">
+            <table class="gym-table">
+              <thead>
+                <tr>
+                  <th style="text-align:left;">Kategori</th>
+                  <th>Rentang BMI</th>
+                  <th>Risiko Kesehatan</th>
+                  <th>Rekomendasi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:left;"><span class="bmi-badge bmi-under">Kurus</span></td>
+                  <td>&lt; 18.5</td>
+                  <td>Kekurangan gizi, anemia</td>
+                  <td>Program penambahan massa otot</td>
+                </tr>
+                <tr>
+                  <td style="text-align:left;"><span class="bmi-badge bmi-normal">Normal</span></td>
+                  <td>18.5 – 24.9</td>
+                  <td>Risiko rendah</td>
+                  <td>Pertahankan dengan latihan rutin</td>
+                </tr>
+                <tr>
+                  <td style="text-align:left;"><span class="bmi-badge bmi-over">Kelebihan Berat</span></td>
+                  <td>25.0 – 29.9</td>
+                  <td>Risiko sedang (hipertensi, dll)</td>
+                  <td>Cardio + latihan beban 3–4x/minggu</td>
+                </tr>
+                <tr>
+                  <td style="text-align:left;"><span class="bmi-badge bmi-obese">Obesitas</span></td>
+                  <td>&ge; 30.0</td>
+                  <td>Risiko tinggi (diabetes, jantung)</td>
+                  <td>Konsultasi trainer + program intensif</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- List Tips -->
+        <div class="row g-4 mt-4">
+          <div class="col-md-6">
+            <div class="list-section h-100">
+              <h6 class="list-section-title">💡 Tips Menjaga BMI Ideal</h6>
+              <ul class="gym-list">
+                <li><i class="fas fa-check"></i> Latihan minimal 3–4 kali per minggu</li>
+                <li><i class="fas fa-check"></i> Konsumsi protein cukup (1.2–1.6g/kg berat badan)</li>
+                <li><i class="fas fa-check"></i> Tidur 7–8 jam setiap malam</li>
+                <li><i class="fas fa-check"></i> Minum air putih minimal 2 liter per hari</li>
+                <li><i class="fas fa-check"></i> Hindari makanan olahan dan tinggi gula</li>
+                <li><i class="fas fa-check"></i> Konsultasi rutin dengan trainer bersertifikat</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="list-section h-100">
+              <h6 class="list-section-title">⚠️ BMI Bukan Satu-satunya Ukuran</h6>
+              <p class="text-muted small mb-3">BMI memiliki keterbatasan. Hal-hal yang TIDAK diukur BMI:</p>
+              <ul class="gym-list">
+                <li><i class="fas fa-info-circle"></i> Persentase lemak tubuh vs massa otot</li>
+                <li><i class="fas fa-info-circle"></i> Distribusi lemak (perut vs pinggul)</li>
+                <li><i class="fas fa-info-circle"></i> Kepadatan tulang (bone density)</li>
+                <li><i class="fas fa-info-circle"></i> Kebugaran kardiovaskular</li>
+                <li><i class="fas fa-info-circle"></i> Kondisi kesehatan spesifik individu</li>
+              </ul>
+              <p class="text-muted small mt-3 mb-0">Gunakan BMI sebagai panduan awal, bukan diagnosis akhir.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto">
+      <div class="container">
+        <div class="row g-4 py-5">
+          <div class="col-md-4">
+            <div class="footer-brand mb-3">
+              <span class="brand-sv">SV</span><span class="brand-astha">ASTHA</span> <span class="brand-gym">GYM</span>
+            </div>
+            <p class="footer-desc">Healthy &amp; Fun With Us.<br>Gym terbaik di Palembang dengan alat import 100%.</p>
+            <div class="footer-socials mt-3">
+              <a href="https://www.instagram.com/svasthagym/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@svasthagym.plg" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h6 class="footer-heading">Cabang</h6>
+            <p class="footer-info"><i class="fas fa-map-marker-alt me-2"></i>Jl. D.I. Panjaitan, Tangga Takat,<br>Seberang Ulu II, Palembang 30111</p>
+            <p class="footer-info"><i class="fas fa-map-marker-alt me-2"></i>Jl. Kapten Abdullah, Talang Putri,<br>Plaju, Palembang 30119</p>
+          </div>
+          <div class="col-md-4">
+            <h6 class="footer-heading">Kontak</h6>
+            <p class="footer-info"><i class="fas fa-phone me-2"></i>0821-7774-4243</p>
+            <p class="footer-info"><i class="fas fa-phone me-2"></i>0813-7377-2772 (Cabang 2)</p>
+            <p class="footer-info"><i class="fas fa-clock me-2"></i>Senin – Minggu: 07.30 – 22.00</p>
+          </div>
+        </div>
+        <div class="footer-bottom text-center py-3">
+          <p class="mb-0">&copy; 2026 Svastha Gym Palembang. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="bmi.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

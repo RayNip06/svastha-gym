@@ -1,0 +1,1019 @@
+/* =====================
+   SVASTHA GYM — style.css
+   Tema: Dark Blue + Dark Gold
+   ===================== */
+
+:root {
+  /* === WARNA UTAMA === */
+  --gold:        #C9A84C;
+  --gold-light:  #E2C97E;
+  --gold-dark:   #9A7A2E;
+  --gold-glow:   rgba(201, 168, 76, 0.20);
+  --gold-glow2:  rgba(201, 168, 76, 0.08);
+
+  --navy:        #0B1629;
+  --navy-2:      #0E1E38;
+  --navy-3:      #142444;
+  --navy-4:      #1B2D55;
+  --navy-5:      #243560;
+
+  --dark:        #080F1C;
+  --dark-2:      #0A1222;
+
+  --light:       #F0EDE6;
+  --muted:       #7A8BAA;
+  --white:       #FFFFFF;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+/* =====================
+   NAVBAR
+   ===================== */
+#mainNav {
+  background: rgba(8, 15, 28, 0.88) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  padding: 14px 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease !important;
+  box-shadow: none !important;
+}
+#mainNav.nav-scrolled {
+  background: rgba(8, 15, 28, 0.98) !important;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.6) !important;
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.brand-sv    { color: var(--gold); }
+.brand-astha { color: var(--white); }
+.brand-gym   { color: var(--muted); font-size: 1.1rem; margin-left: 4px; }
+
+.navbar-nav .nav-link {
+  color: rgba(255,255,255,0.70) !important;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 12px !important;
+  transition: color 0.2s;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--gold-light) !important;
+}
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--dark) !important;
+  border-radius: 6px;
+  font-weight: 700 !important;
+  padding: 8px 18px !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--dark) !important; }
+
+.navbar-toggler { border-color: rgba(201,168,76,0.3); }
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28201,168,76,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* =====================
+   TOMBOL
+   ===================== */
+.btn-fire {
+  background: var(--gold);
+  color: var(--dark) !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-fire:hover {
+  background: var(--gold-light);
+  color: var(--dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.3);
+}
+
+.btn-outline-fire {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.btn-outline-fire:hover {
+  background: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 4px 16px rgba(201,168,76,0.25);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.07);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+
+/* Ripple */
+.btn-fire, .btn-outline-fire { position: relative; overflow: hidden; }
+.btn-ripple {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  animation: rippleAnim 0.6s linear;
+  pointer-events: none;
+}
+@keyframes rippleAnim {
+  to { transform: translate(-50%,-50%) scale(40); opacity: 0; }
+}
+
+/* =====================
+   HERO
+   ===================== */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(145deg, var(--dark) 0%, var(--navy) 55%, var(--dark) 100%);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 65% 45%, rgba(201,168,76,0.09) 0%, transparent 55%);
+  pointer-events: none;
+}
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background: linear-gradient(to top, var(--dark), transparent);
+}
+
+.hero-eyebrow {
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.hero-accent { color: var(--gold); }
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(240,237,230,0.60);
+  max-width: 480px;
+  line-height: 1.75;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  color: rgba(201,168,76,0.4);
+  animation: bounce 2s infinite;
+  z-index: 2;
+  font-size: 1.2rem;
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* =====================
+   STATS BAR
+   ===================== */
+.stats-bar {
+  background: var(--navy-2);
+  border-top: 1px solid rgba(201,168,76,0.12);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+.stat-item {
+  padding: 2rem 1rem;
+  border-right: 1px solid rgba(201,168,76,0.10);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.stat-lbl {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* =====================
+   SECTIONS
+   ===================== */
+.py-6 { padding-top: 5rem; padding-bottom: 5rem; }
+
+.section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: 0.03em;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+.section-body {
+  color: rgba(240,237,230,0.55);
+  line-height: 1.8;
+  max-width: 440px;
+}
+
+/* =====================
+   WHY SVASTHA — FEATURE CARDS
+   ===================== */
+.section-why { background: var(--dark); }
+
+.feature-card {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.10);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.feature-card:hover {
+  border-color: rgba(201,168,76,0.40);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+}
+.feature-card--offset { margin-top: 1.5rem; }
+
+.feature-icon {
+  width: 44px; height: 44px;
+  background: var(--gold-glow2);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.feature-card h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.feature-card p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* =====================
+   GALLERY
+   ===================== */
+.img-gallery {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--navy-3);
+  border: 1px solid rgba(201,168,76,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+}
+.img-gallery:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+/* =====================
+   CTA BANNER
+   ===================== */
+.cta-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 50%, var(--navy) 100%);
+  padding: 5rem 0;
+  border-top: 1px solid rgba(201,168,76,0.18);
+  border-bottom: 1px solid rgba(201,168,76,0.18);
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+.cta-title span { color: var(--gold); }
+.cta-sub { color: rgba(240,237,230,0.50); font-size: 1rem; }
+
+/* =====================
+   PAGE HEADER
+   ===================== */
+.page-header {
+  background: linear-gradient(to bottom, var(--navy-2), var(--dark));
+  padding: 5rem 0 3rem;
+  border-bottom: 1px solid rgba(201,168,76,0.10);
+}
+.page-header-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.page-header-sub { color: var(--muted); font-size: 1rem; }
+
+/* =====================
+   MEMBERSHIP CARDS
+   ===================== */
+.membership-card {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 20px;
+  padding: 2rem;
+  height: 100%;
+  position: relative;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.membership-card:hover {
+  border-color: rgba(201,168,76,0.45);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+.membership-card--featured {
+  background: linear-gradient(145deg, var(--navy-3), var(--navy-4));
+  border-color: var(--gold);
+  box-shadow: 0 0 35px rgba(201,168,76,0.18);
+}
+.membership-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.membership-badge--hot {
+  color: var(--gold);
+  background: var(--gold-glow2);
+  border: 1px solid rgba(201,168,76,0.25);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.membership-plan {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.membership-price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.membership-price span {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.membership-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; }
+.membership-features { list-style: none; padding: 0; margin: 0; }
+.membership-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(240,237,230,0.75);
+  padding: 0.38rem 0;
+  border-bottom: 1px solid rgba(201,168,76,0.07);
+}
+.membership-features li:last-child { border-bottom: none; }
+.membership-features li i { color: var(--gold); font-size: 0.7rem; }
+
+/* =====================
+   DAFTAR FORM
+   ===================== */
+.bg-dark-gym { background: var(--navy); }
+
+.daftar-card {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+.daftar-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+/* Form inputs — fix placeholder visibility */
+.gym-input {
+  background: var(--navy-3) !important;
+  border: 1px solid rgba(201,168,76,0.20) !important;
+  color: var(--white) !important;
+  border-radius: 8px !important;
+}
+.gym-input::placeholder {
+  color: rgba(122, 139, 170, 0.70) !important;
+  opacity: 1;
+}
+.gym-input:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15) !important;
+  background: var(--navy-3) !important;
+  color: var(--white) !important;
+  outline: none;
+}
+.gym-input option {
+  background: var(--navy-3);
+  color: var(--white);
+}
+/* Fix: select placeholder option */
+.gym-input option[value=""] { color: rgba(122,139,170,0.7); }
+
+.form-label { color: rgba(240,237,230,0.80) !important; font-size: 0.85rem; }
+
+.success-icon { font-size: 3.5rem; color: var(--gold); }
+
+/* =====================
+   BRANCH PAGE
+   ===================== */
+.branch-card {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.10);
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+.branch-card--alt {
+  border-color: rgba(201,168,76,0.28);
+  box-shadow: 0 0 24px rgba(201,168,76,0.06);
+}
+.branch-num {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: rgba(201,168,76,0.12);
+  line-height: 1;
+  margin-bottom: -0.5rem;
+}
+.branch-name {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.branch-name span { color: var(--gold); }
+.branch-info-list { display: flex; flex-direction: column; gap: 1rem; }
+.branch-info-item { display: flex; gap: 1rem; align-items: flex-start; }
+.branch-info-item i { color: var(--gold); width: 18px; margin-top: 4px; flex-shrink: 0; }
+.branch-info-item strong {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.branch-info-item p { color: rgba(240,237,230,0.72); font-size: 0.9rem; margin: 0; }
+.branch-info-item a { color: rgba(240,237,230,0.72); text-decoration: none; }
+.branch-info-item a:hover { color: var(--gold); }
+
+.branch-divider { border-color: rgba(201,168,76,0.10); margin: 1rem 0; }
+
+.map-embed-container { border-radius: 16px; overflow: hidden; background: var(--navy-3); }
+.map-embed-container iframe { display: block; }
+
+.img-gym-interior {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  background: var(--navy-3);
+  border: 1px solid rgba(201,168,76,0.1);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(201,168,76,0.12);
+}
+.footer-brand { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.04em; }
+.footer-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.75; }
+.footer-heading {
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.footer-info { color: var(--muted); font-size: 0.85rem; line-height: 1.65; margin-bottom: 0.75rem; }
+.footer-info i { color: var(--gold); }
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-socials a {
+  width: 36px; height: 36px;
+  background: var(--navy-3);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.footer-socials a:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(201,168,76,0.08);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* =====================
+   HERO IMAGE SLOT
+   ===================== */
+.img-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("images/Estetik.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  z-index: 0;
+}
+
+/* =====================
+   ANIMASI & SCROLL REVEAL
+   ===================== */
+.reveal-ready {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.revealed { opacity: 1; transform: translateY(0); }
+
+.feature-card:nth-child(1).reveal-ready { transition-delay: 0s; }
+.feature-card:nth-child(2).reveal-ready { transition-delay: 0.1s; }
+.feature-card:nth-child(3).reveal-ready { transition-delay: 0.2s; }
+.feature-card:nth-child(4).reveal-ready { transition-delay: 0.3s; }
+.membership-card:nth-child(1).reveal-ready { transition-delay: 0s; }
+.membership-card:nth-child(2).reveal-ready { transition-delay: 0.12s; }
+.membership-card:nth-child(3).reveal-ready { transition-delay: 0.24s; }
+
+.counter-done { transition: color 0.3s; }
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 768px) {
+  .hero-title { font-size: 4rem; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .stat-item:last-child { border-bottom: none; }
+  .feature-card--offset { margin-top: 0; }
+  .daftar-card { padding: 1.5rem; }
+  .branch-card { padding: 1.5rem; }
+}
+
+
+/* =====================
+   TEKS BERJALAN (marquee)
+   ===================== */
+.marquee-bar {
+  background: linear-gradient(90deg, var(--navy-4), var(--navy-5), var(--navy-4));
+  border-bottom: 1px solid rgba(201, 168, 76, 0.30);
+  padding: 10px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  letter-spacing: 0.03em;
+  overflow: hidden;
+}
+.marquee-bar marquee {
+  color: var(--gold-light);
+}
+
+/* =====================
+   LIST SECTION
+   ===================== */
+.list-section {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+.list-section-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.85rem;
+}
+
+/* Unordered list */
+.gym-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.gym-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: rgba(240,237,230,0.82);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+}
+.gym-list li:last-child { border-bottom: none; }
+.gym-list li i {
+  color: var(--gold);
+  width: 16px;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+/* Ordered list */
+.gym-list-ol {
+  padding-left: 1.4rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.gym-list-ol li {
+  font-size: 0.88rem;
+  color: rgba(240,237,230,0.82);
+  padding: 0.25rem 0;
+  padding-left: 0.3rem;
+  line-height: 1.5;
+}
+.gym-list-ol li::marker {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* =====================
+   TABEL PERBANDINGAN
+   ===================== */
+.table-section {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 20px;
+  padding: 2rem;
+}
+.table-section .section-title {
+  font-size: 2rem !important;
+}
+
+.gym-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.88rem;
+  color: rgba(240,237,230,0.85);
+}
+
+/* Header */
+.gym-table thead tr {
+  background: var(--navy-4);
+}
+.gym-table thead th {
+  padding: 1rem 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  border-bottom: 2px solid rgba(201,168,76,0.30);
+  text-align: center;
+  white-space: nowrap;
+}
+.gym-table thead th:first-child {
+  text-align: left;
+  border-radius: 10px 0 0 0;
+}
+.gym-table thead th:last-child {
+  border-radius: 0 10px 0 0;
+}
+.gym-table thead th small {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 3px;
+}
+
+/* Featured column header */
+.gym-table thead .th-featured {
+  background: rgba(201,168,76,0.18);
+  color: var(--gold);
+  border-left: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+}
+
+/* Body rows */
+.gym-table tbody tr {
+  transition: background 0.15s;
+}
+.gym-table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.02);
+}
+.gym-table tbody tr:hover {
+  background: rgba(201,168,76,0.05);
+}
+
+.gym-table tbody td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  text-align: center;
+  vertical-align: middle;
+}
+.gym-table tbody td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--light);
+}
+
+/* Featured column body */
+.gym-table tbody .td-featured {
+  background: rgba(201,168,76,0.06);
+  border-left: 2px solid rgba(201,168,76,0.30);
+  border-right: 2px solid rgba(201,168,76,0.30);
+}
+
+/* Icons dalam tabel */
+.td-yes { color: #4ade80; font-size: 1rem; }
+.td-no  { color: #f87171; font-size: 1rem; }
+
+/* =====================
+   FRAME SECTION (iframe)
+   ===================== */
+.frame-section {
+  border: 2px solid rgba(201,168,76,0.30);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--navy-3);
+}
+.frame-label {
+  background: var(--navy-4);
+  border-bottom: 1px solid rgba(201,168,76,0.20);
+  padding: 0.65rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.map-frame {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: 0;
+}
+
+/* =====================
+   BMI PAGE
+   ===================== */
+
+.bmi-card,
+.bmi-score-card,
+.bmi-detail-card,
+.bmi-rekomendasi,
+.bmi-result-default{
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,.15);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.bmi-card-title{
+  color: var(--white);
+  font-weight: 700;
+}
+
+.gender-btn{
+  flex:1;
+  background: var(--navy-3);
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:12px;
+  padding:14px;
+  text-align:center;
+  cursor:pointer;
+  color:var(--light);
+  transition:.3s;
+}
+
+.gender-btn:hover{
+  border-color:var(--gold);
+}
+
+.gender-btn.active{
+  background:var(--gold);
+  color:var(--dark);
+  font-weight:700;
+  border-color:var(--gold);
+}
+
+.input-group-bmi{
+  display:flex;
+  flex-direction:column;
+}
+
+.input-unit{
+  margin-top:6px;
+  color:var(--gold);
+  font-size:.85rem;
+}
+
+.bmi-score-card{
+  text-align:center;
+}
+
+.bmi-score-label{
+  color:var(--gold);
+  font-size:.9rem;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+}
+
+.bmi-score-number{
+  font-size:4rem;
+  font-weight:800;
+  color:white;
+  line-height:1;
+}
+
+.bmi-score-category{
+  color:var(--gold);
+  font-size:1.4rem;
+  font-weight:700;
+}
+
+.bmi-bar-wrap{
+  position:relative;
+  margin-top:25px;
+}
+
+.bmi-bar{
+  display:flex;
+  height:22px;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.bmi-seg-under{
+  flex:1;
+  background:#4da3ff;
+}
+
+.bmi-seg-normal{
+  flex:1;
+  background:#28c76f;
+}
+
+.bmi-seg-over{
+  flex:1;
+  background:#ffb400;
+}
+
+.bmi-seg-obese{
+  flex:1;
+  background:#ea5455;
+}
+
+.bmi-bar-seg{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:11px;
+  font-weight:600;
+  color:white;
+}
+
+.bmi-pointer{
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:white;
+  border:3px solid var(--gold);
+  border-radius:50%;
+  top:-9px;
+  left:0;
+  transform:translateX(-50%);
+  transition:.5s;
+  box-shadow:0 0 15px rgba(201,168,76,.6);
+}
+
+.bmi-bar-labels{
+  display:flex;
+  justify-content:space-between;
+  margin-top:8px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.bmi-stat-mini{
+  background:var(--navy-3);
+  padding:15px;
+  border-radius:12px;
+}
+
+.bmi-stat-val{
+  color:white;
+  font-size:1.25rem;
+  font-weight:700;
+}
+
+.bmi-stat-key{
+  color:var(--gold);
+  font-size:.8rem;
+}
+
+.bmi-rek-title{
+  color:var(--gold);
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.bmi-rek-text{
+  color:var(--light);
+}
+
+.bmi-illustration{
+  font-size:4rem;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+
+.error-bmi{
+  color:#ff6b6b;
+}
+
+.daftar-card .text-muted,
+.bg-dark-gym .text-muted,
+section .small.text-muted {
+  color: rgba(240, 237, 230, 0.75) !important;
+}

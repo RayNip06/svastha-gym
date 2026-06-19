@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paket Membership | Svastha Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <span class="brand-sv">SV</span><span class="brand-astha">ASTHA</span>
+          <span class="brand-gym">GYM</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="BMI.html">Cek BMI</a></li>
+            <li class="nav-item"><a class="nav-link" href="cabang.html">Cabang</a></li>
+            <li class="nav-item"><a class="nav-link nav-cta" href="Daftar.html">Daftar Sekarang</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container text-center">
+        <p class="section-eyebrow">PILIH PAKETMU</p>
+        <h1 class="page-header-title">Paket Membership</h1>
+        <p class="page-header-sub">Investasi terbaik untuk kesehatan dan tubuh idealmu.</p>
+      </div>
+    </div>
+
+    <!-- Membership Cards -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+
+          <!-- Daily -->
+          <div class="col-md-6 col-lg-4">
+            <div class="membership-card">
+              <div class="membership-badge">Harian</div>
+              <h3 class="membership-plan">Drop-In</h3>
+              <div class="membership-price">Rp 20.000<span>/sesi</span></div>
+              <p class="membership-desc">Cocok untuk yang ingin mencoba dulu sebelum berkomitmen.</p>
+              <ul class="membership-features">
+                <li><i class="fas fa-check"></i> Akses semua alat gym</li>
+                <li><i class="fas fa-check"></i> Loker tersedia</li>
+              </ul>
+              <a href="#daftarForm" class="btn btn-outline-fire w-100 mt-3">Pilih Paket</a>
+            </div>
+          </div>
+
+          <!-- Monthly -->
+          <div class="col-md-6 col-lg-4">
+            <div class="membership-card membership-card--featured">
+              <div class="membership-badge membership-badge--hot">Terpopuler 🔥</div>
+              <h3 class="membership-plan">Bulanan</h3>
+              <div class="membership-price">Rp 150.000<span>/bulan</span></div>
+              <p class="membership-desc">Paling banyak dipilih. Akses penuh selama 30 hari.</p>
+              <ul class="membership-features">
+                <li><i class="fas fa-check"></i> Akses semua alat gym</li>
+                <li><i class="fas fa-check"></i> Loker tersedia</li>
+              </ul>
+              <a href="#daftarForm" class="btn btn-fire w-100 mt-3">Pilih Paket</a>
+            </div>
+          </div>
+
+          <!-- Yearly -->
+          <div class="col-md-6 col-lg-4">
+            <div class="membership-card">
+              <div class="membership-badge">Tahunan</div>
+              <h3 class="membership-plan">Tahunan</h3>
+              <div class="membership-price">Rp 1.600.000<span>/16 Bulan</span></div>
+              <p class="membership-desc">Hemat paling banyak. Untuk kamu yang serius.</p>
+              <ul class="membership-features">
+                <li><i class="fas fa-check"></i> Akses semua alat gym</li>
+                <li><i class="fas fa-check"></i> Loker tersedia</li>
+              </ul>
+              <a href="#daftarForm" class="btn btn-outline-fire w-100 mt-3">Pilih Paket</a>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="text-center text-muted small mt-4">* Harga bersifat estimasi. Hubungi cabang terdekat untuk info promo terkini.</p>
+      </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="py-5 bg-dark-gym" id="daftarForm">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="daftar-card">
+              <h2 class="daftar-title">Daftar Membership</h2>
+              <p class="text-muted mb-4">Isi form di bawah dan tim kami akan segera menghubungimu.</p>
+
+              <div id="formArea">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">Nama Lengkap</label>
+                    <input type="text" class="form-control gym-input" id="regName" placeholder="John Doe" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">No. WhatsApp</label>
+                    <input type="tel" class="form-control gym-input" id="regPhone" placeholder="+62 812 3456 7890" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">Pilih Paket</label>
+                    <select class="form-select gym-input" id="regPlan">
+                      <option value="">-- Pilih Paket --</option>
+                      <option value="drop-in">Drop-In (Rp 20.000/sesi)</option>
+                      <option value="bulanan">Bulanan (Rp 150.000/bulan)</option>
+                      <option value="tahunan">Tahunan (Rp 1.600.000/16 bulan)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">Pilih Cabang</label>
+                    <select class="form-select gym-input" id="regBranch">
+                      <option value="">-- Pilih Cabang --</option>
+                      <option value="panjaitan">Jl. DI Panjaitan (Tangga Takat)</option>
+                      <option value="kapten">Jl. Kapten Abdullah (Talang Putri)</option>
+                    </select>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <button class="btn btn-fire w-100 py-3" onclick="submitDaftar()">Kirim Pendaftaran</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="successArea" class="d-none text-center py-4">
+                <div class="success-icon mb-3"><i class="fas fa-check-circle"></i></div>
+                <h4 class="fw-bold">Pendaftaran Diterima!</h4>
+                <p class="text-muted">Tim Svastha Gym akan menghubungimu via WhatsApp dalam 1×24 jam. Sampai jumpa di gym! 💪</p>
+                <a href="index.html" class="btn btn-outline-fire mt-2">Kembali ke Beranda</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer mt-auto">
+      <div class="container">
+        <div class="row g-4 py-5">
+          <div class="col-md-4">
+            <div class="footer-brand mb-3">
+              <span class="brand-sv">SV</span><span class="brand-astha">ASTHA</span> <span class="brand-gym">GYM</span>
+            </div>
+            <p class="footer-desc">Healthy &amp; Fun With Us.<br>Gym terbaik di Palembang dengan alat import 100%.</p>
+            <div class="footer-socials mt-3">
+              <a href="https://www.instagram.com/svasthagym/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@svasthagym.plg" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h6 class="footer-heading">Cabang</h6>
+            <p class="footer-info"><i class="fas fa-map-marker-alt me-2"></i>Jl. D.I. Panjaitan, Tangga Takat,<br>Seberang Ulu II, Palembang 30111</p>
+            <p class="footer-info"><i class="fas fa-map-marker-alt me-2"></i>Jl. Kapten Abdullah, Talang Putri,<br>Plaju, Palembang 30119</p>
+          </div>
+          <div class="col-md-4">
+            <h6 class="footer-heading">Kontak</h6>
+            <p class="footer-info"><i class="fas fa-phone me-2"></i>0821-7774-4243</p>
+            <p class="footer-info"><i class="fas fa-phone me-2"></i>0813-7377-2772 (Cabang 2)</p>
+            <p class="footer-info"><i class="fas fa-clock me-2"></i>Senin – Minggu: 07.30 – 22.00</p>
+          </div>
+        </div>
+        <div class="footer-bottom text-center py-3">
+          <p class="mb-0">&copy; 2026 Svastha Gym Palembang. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function submitDaftar() {
+        const name = document.getElementById('regName').value.trim();
+        const phone = document.getElementById('regPhone').value.trim();
+        const plan = document.getElementById('regPlan').value;
+        const branch = document.getElementById('regBranch').value;
+        if (!name || !phone || !plan || !branch) {
+          alert('Mohon lengkapi semua field terlebih dahulu.');
+          return;
+        }
+        document.getElementById('formArea').classList.add('d-none');
+        document.getElementById('successArea').classList.remove('d-none');
+      }
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>
